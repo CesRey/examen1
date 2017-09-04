@@ -1,8 +1,8 @@
 
 public class Estacionamiento
 {
-    int max=150, costo=15, vehiest=0, total, i,horaentradas[],minutosentrada[];
-    String Arr[];
+    private int max=150, costo=15, vehiest=0, total, i,horaentradas[],minutosentrada[],minutostotal;
+    private String Arr[];
     boolean Registrar(String placa,int Horaentrada,int Minutosentrada)
     {
         if(vehiest<=max)
@@ -29,14 +29,19 @@ public class Estacionamiento
             if(Arr[i] == placa)
             {
                 Arr[i]=null;
+                total=Horasalida-horaentradas[i];
+                total=total*costo;
+                minutostotal=Minutossalida+minutosentrada[i];
+                if(minutostotal>60)
+                {
+                    total+=1;
+                }
+                System. out.println("El total a pagar es:"+total+"$$");   
                 return true;
             }
-            else 
-            {
-                System. out. println(" No se encuentra el vehiculo en el sistema");   
-                return false;
-            }
         }
+        
+        System. out. println(" No se encuentra el vehiculo en el sistema");   
         return false;
     }
 }
